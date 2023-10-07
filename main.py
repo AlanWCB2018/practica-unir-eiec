@@ -5,12 +5,14 @@ Organization: UNIR
 
 import os
 import sys
+import argparse
 
 DEFAULT_FILENAME = "words.txt"
 DEFAULT_DUPLICATES = False
 
+# Ordena la lista según la opción proporcionada
 
-def sort_list(items, ascending=True):
+def sort_list(items, ascending=False):
     if not isinstance(items, list):
         raise RuntimeError(f"No puede ordenar {type(items)}")
 
@@ -30,6 +32,7 @@ if __name__ == "__main__":
     else:
         print("Se debe indicar el fichero como primer argumento")
         print("El segundo argumento indica si se quieren eliminar duplicados")
+        print("El tercer argumento indica si el orden debe ser ascendente")
         sys.exit(1)
 
     print(f"Se leerán las palabras del fichero {filename}")
