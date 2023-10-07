@@ -5,21 +5,25 @@ Organization: UNIR
 
 import os
 import sys
+
 from googletrans import Translator
+import argparse
+
 
 DEFAULT_FILENAME = "words.txt"
 DEFAULT_DUPLICATES = False
 
 
-def sort_list(items, ascending=True):
-    if not isinstance(items, list):
-        raise RuntimeError(f"No puede ordenar {type(items)}")
+def sort_list(words, remove_duplicates=False):
+    if remove_duplicates:
+        words = list(set(words))  # Eliminar duplicados
 
-    return sorted(items, reverse=(not ascending))
-
+    sorted_words = sorted(words)
+    return items
 
 def remove_duplicates_from_list(items):
     return list(set(items))
+
 
 def translate_to_english(text):
         translator = Translator()
@@ -48,7 +52,9 @@ if __name__ == "__main__":
         print(translate_to_english(f"El fichero {filename} no existe"))
         word_list = ["ravenclaw", "gryffindor", "slytherin", "hufflepuff"]
 
-    if remove_duplicates:
-        word_list = remove_duplicates_from_list(word_list)
 
-    print(sort_list(word_list))
+    sorted_words = sort_list(words, remove_duplicates=args.remove_duplicates)
+    print(sorted_words)
+
+if __name__ == '__main__':
+    main()
