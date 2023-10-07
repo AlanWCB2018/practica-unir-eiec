@@ -8,6 +8,9 @@ Los comandos del Makefile funcionarán en Linux y MacOS. En caso de usar Windows
 
 ## Ejecución
 
+Tener la libreria Googletrans
+  pip install googletrans==4.0.0-rc1
+
 python3 main.py <filename> <dup>
   filename: **ruta** al fichero que contiene la lista de palabras, una por línea
   dup: **yes|no**, yes para eliminar palabras duplicadas, no para mantener la lista
