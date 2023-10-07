@@ -5,6 +5,7 @@ Organization: UNIR
 
 import os
 import sys
+import argparse
 
 from googletrans import Translator
 import argparse
@@ -13,13 +14,14 @@ import argparse
 DEFAULT_FILENAME = "words.txt"
 DEFAULT_DUPLICATES = False
 
+# Ordena la lista según la opción proporcionada
 
-def sort_list(words, remove_duplicates=False):
-    if remove_duplicates:
-        words = list(set(words))  # Eliminar duplicados
 
-    sorted_words = sorted(words)
-    return items
+def sort_list(items, ascending=False):
+    if not isinstance(items, list):
+        raise RuntimeError(f"No puede ordenar {type(items)}")
+
+    return sorted(items, reverse=(not ascending))
 
 def remove_duplicates_from_list(items):
     return list(set(items))
@@ -39,6 +41,7 @@ if __name__ == "__main__":
     else:
         print(translate_to_english("Se debe indicar el fichero como primer argumento"))
         print(translate_to_english("El segundo argumento indica si se quieren eliminar duplicados"))
+        print(translate_to_english("El tercer argumento indica si el orden debe ser ascendente"))
         sys.exit(1)
 
     print(translate_to_english(f"Se leerán las palabras del fichero {filename}"))
